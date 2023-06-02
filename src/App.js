@@ -14,6 +14,7 @@ function App() {
   const [alarms, setAlarms] = useState([]);
   const [switchState, setSwitchState] = useState(false);
   const ref = useRef();
+  
 
   function handleSwitch() {
     setSwitchState(!switchState);
@@ -104,6 +105,12 @@ function changeColor() {
         minute: minute,
         message: message,
       };
+      if(alarm.hour.length == 1) {
+        alarm.hour = "0" + alarm.hour;
+      }
+      if(alarm.minute.length == 1) {
+        alarm.minute = "0" + alarm.minute;
+      }
       // save to local storage
       if (localStorage.getItem("alarms")) {
         var alarms = JSON.parse(localStorage.getItem("alarms"));
