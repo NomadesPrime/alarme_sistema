@@ -14,39 +14,63 @@ function App() {
   const [alarms, setAlarms] = useState([]);
   const [switchState, setSwitchState] = useState(false);
   const ref = useRef();
+  const siren = require("./siren.mp3");
   
 
   function handleSwitch() {
     setSwitchState(!switchState);
   }
 
-  var alarmAudio = document.getElementById("alarmAudio");
- 
-  function checkAlarm() {
-     var date = new Date();
-      var hours = date.getHours();
-      var minutes = date.getMinutes();
-      var seconds = date.getSeconds();
-      
+var alarmAudio = new Audio(siren);
+alarmAudio.muted = true;
+alarmAudio.autoplay = true;
+alarmAudio.loop = true;
 
+  function checkAlarm() {
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+  
+
+      var alarms = JSON.parse(localStorage.getItem("alarms"));
       if (alarms.length > 0) {
-        alarms.forEach((alarm) => {
-          if (alarm.hour == hours && alarm.minute == minutes && seconds == 0) {
-            alarmAudio.play();
-            document.getElementsByClassName("alarmScreen")[0].classList.remove("hidden");
-            document.getElementsByClassName("alarmScreen")[0].classList.add("flex");
-            document.getElementsByClassName("hour")[0].innerHTML = alarm.hour + ":" + alarm.minute;
-            document.getElementsByClassName("message")[0].innerHTML = alarm.message;  
-            // change the color
-            changeColor();
-          }
-        });
-      }
+      alarms.forEach((alarm) => {
+        if (alarm.hour == hours && alarm.minute == minutes && seconds == 0) {
+          changeColor();
+          alarmAudio.muted = false;
+          document
+            .getElementsByClassName("alarmScreen")[0]
+            .classList.remove("hidden");
+          document
+            .getElementsByClassName("alarmScreen")[0]
+            .classList.add("flex");
+          document.getElementById("clockAlarm").innerHTML =
+            alarm.hour + ":" + alarm.minute;
+          document.getElementById("messsageAlarm").innerHTML = alarm.message;
+          document
+            .getElementsByClassName("stopButton")[0]
+            .addEventListener("click", function () {
+              alarmAudio.pause();
+              document
+                .getElementsByClassName("alarmScreen")[0]
+                .classList.remove("flex");
+              document
+                .getElementsByClassName("alarmScreen")[0]
+                .classList.add("hidden");
+            });
+        }
+      });
     }
+  }
+
+ 
+
     setInterval(checkAlarm, 1000);
+    
 
 function changeColor() {
-  var color = document.getElementsByClassName("alarmScreenDiv")[0];
+  var color = document.getElementsByClassName("alarmScreen")[0];
   var count = 0;
   var interval = setInterval(function() {
     if (count % 2 == 0) {
@@ -158,8 +182,13 @@ function changeColor() {
     document.getElementsByClassName("alarmScreen")[0].classList.remove("flex");
     document.getElementsByClassName("alarmScreen")[0].classList.add("hidden");
   }
-  // siren src local
-  const siren = require("./siren.mp3");
+
+function sobrepor() {
+  
+
+}
+
+
  
 
   return (
@@ -208,6 +237,7 @@ function changeColor() {
       >
         <source src={siren} type="audio/mpeg" />
       </audio>
+
     </div>
   );
 }
