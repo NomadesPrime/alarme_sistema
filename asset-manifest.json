@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/alarme_sistema/static/css/main.6c35baea.css",
-    "main.js": "/alarme_sistema/static/js/main.68ad8109.js",
+    "main.css": "/alarme_sistema/static/css/main.7231a60f.css",
+    "main.js": "/alarme_sistema/static/js/main.37b416cb.js",
     "static/js/787.cab1ca35.chunk.js": "/alarme_sistema/static/js/787.cab1ca35.chunk.js",
     "static/media/siren.mp3": "/alarme_sistema/static/media/siren.21ce8ab7bbd2d9438200.mp3",
     "static/media/logo.svg": "/alarme_sistema/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/alarme_sistema/index.html",
-    "main.6c35baea.css.map": "/alarme_sistema/static/css/main.6c35baea.css.map",
-    "main.68ad8109.js.map": "/alarme_sistema/static/js/main.68ad8109.js.map",
+    "main.7231a60f.css.map": "/alarme_sistema/static/css/main.7231a60f.css.map",
+    "main.37b416cb.js.map": "/alarme_sistema/static/js/main.37b416cb.js.map",
     "787.cab1ca35.chunk.js.map": "/alarme_sistema/static/js/787.cab1ca35.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c35baea.css",
-    "static/js/main.68ad8109.js"
+    "static/css/main.7231a60f.css",
+    "static/js/main.37b416cb.js"
   ]
 }
